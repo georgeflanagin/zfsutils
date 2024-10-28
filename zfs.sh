@@ -36,6 +36,7 @@ function validate_user
     fi
 }
 
+
 ###
 # Datasets
 ###
@@ -181,3 +182,25 @@ function remove_reservation
     zfs_check $?
 }
 
+echo "Use 'helpzfs' to list the commands in this file."
+
+function helpzfs
+{
+    echo " "
+    create_dataset
+    echo " "
+    destroy_dataset
+    echo " "
+    grant
+    echo " "
+    revoke
+    echo " "
+    remove_quota
+    echo " "
+    set_quota
+    echo " "
+    set_reservation
+    echo " "
+    remove_reservation
+    echo " "
+}
