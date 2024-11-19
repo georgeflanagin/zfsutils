@@ -6,6 +6,12 @@ pools=$(zpool list | tail -n 2 | awk '{print $1}' | tr '\n' ' ')
 npools=$(zpool list | tail -n 2 | grep -c $)
 for default_pool in $pools; do break; done
 
+unalias dh >/dev/null 2>&1
+function dh
+{
+    zfs list -o name,used,available,refer,usedbydataset,usedbysnapshots,usedbychildren,usedbyrefreservation
+}
+
 function zfs_check
 {
     case $1 in
